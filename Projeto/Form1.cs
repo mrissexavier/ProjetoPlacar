@@ -68,7 +68,38 @@ namespace Projeto
 
         private void btn_comecar_Click(object sender, EventArgs e)
         {
-            cronometro.Enabled = true;
+            if(min == 90)
+            {
+                min = 0;
+                seg = 0;
+                lbl_timer.Text = "00:00";
+                btn_comecar.Text = "Começar Jogo";
+                lbl_resultado1.Text = "0";
+                lbl_resultado2.Text = "0";
+                lbl_parte.Text = "1º tempo";
+            }
+            else
+            {
+                cronometro.Enabled = true;
+                btn_comecar.Visible = false;
+                AtivarBotoes();
+            }
+        }
+
+        private void AtivarBotoes()
+        {
+           btn_mais1.Enabled = true;
+            btn_menos1.Enabled = true;
+            btn_mais2.Enabled = true;
+            btn_menos2.Enabled = true;
+        }
+
+        private void DesativarBotoes()
+        {
+            btn_mais1.Enabled = false;
+            btn_menos1.Enabled = false;
+            btn_mais2.Enabled = false;
+            btn_menos2.Enabled = false;
         }
 
         private void cronometro_Tick(object sender, EventArgs e)
@@ -93,12 +124,21 @@ namespace Projeto
             lbl_timer.Text = texto;
 
             if (min < 45)
-                lbl_parte.Text = "1ª parte";
+                lbl_parte.Text = "1º tempo";
             else
-                lbl_parte.Text = "2ª parte";
+                lbl_parte.Text = "2º tempo";
            
-            if ((min == 45 && seg == 0) || (min == 90) )
+            if ((min == 45 && seg == 0) || (min == 90))
+            {
                 cronometro.Enabled = false;
+                btn_comecar.Visible = true;
+                DesativarBotoes();
+
+                if (min == 45)
+                    btn_comecar.Text = "Começar 2º tempo";
+                else if (min == 90)
+                    btn_comecar.Text = "Recomeçar";
+            }
         }
     }
 }

@@ -115,11 +115,12 @@
             this.lbl_resultado1.Name = "lbl_resultado1";
             this.lbl_resultado1.Size = new System.Drawing.Size(26, 30);
             this.lbl_resultado1.TabIndex = 6;
-            this.lbl_resultado1.Text = "1";
+            this.lbl_resultado1.Text = "0";
             // 
             // btn_mais2
             // 
             this.btn_mais2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_mais2.Enabled = false;
             this.btn_mais2.Location = new System.Drawing.Point(496, 279);
             this.btn_mais2.Name = "btn_mais2";
             this.btn_mais2.Size = new System.Drawing.Size(30, 30);
@@ -131,6 +132,7 @@
             // btn_menos2
             // 
             this.btn_menos2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_menos2.Enabled = false;
             this.btn_menos2.Location = new System.Drawing.Point(537, 279);
             this.btn_menos2.Name = "btn_menos2";
             this.btn_menos2.Size = new System.Drawing.Size(30, 30);
@@ -142,6 +144,7 @@
             // btn_menos1
             // 
             this.btn_menos1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_menos1.Enabled = false;
             this.btn_menos1.Location = new System.Drawing.Point(97, 279);
             this.btn_menos1.Name = "btn_menos1";
             this.btn_menos1.Size = new System.Drawing.Size(30, 30);
@@ -153,6 +156,7 @@
             // btn_mais1
             // 
             this.btn_mais1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_mais1.Enabled = false;
             this.btn_mais1.Location = new System.Drawing.Point(56, 279);
             this.btn_mais1.Name = "btn_mais1";
             this.btn_mais1.Size = new System.Drawing.Size(30, 30);
@@ -171,16 +175,16 @@
             this.lbl_parte.AutoSize = true;
             this.lbl_parte.Location = new System.Drawing.Point(299, 143);
             this.lbl_parte.Name = "lbl_parte";
-            this.lbl_parte.Size = new System.Drawing.Size(48, 15);
+            this.lbl_parte.Size = new System.Drawing.Size(56, 15);
             this.lbl_parte.TabIndex = 14;
-            this.lbl_parte.Text = "1ª parte";
+            this.lbl_parte.Text = "1º tempo";
             // 
             // btn_comecar
             // 
             this.btn_comecar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_comecar.Location = new System.Drawing.Point(275, 195);
+            this.btn_comecar.Location = new System.Drawing.Point(260, 195);
             this.btn_comecar.Name = "btn_comecar";
-            this.btn_comecar.Size = new System.Drawing.Size(111, 23);
+            this.btn_comecar.Size = new System.Drawing.Size(140, 23);
             this.btn_comecar.TabIndex = 15;
             this.btn_comecar.Text = "Começar Jogo";
             this.btn_comecar.UseVisualStyleBackColor = true;
