@@ -6,7 +6,8 @@ namespace Projeto
         {
             InitializeComponent();
             CarregarImagem(pb_clube1, lbl_nomeClube1.Text);
-            CarregarImagem(pb_clube1, lbl_nomeClube2.Text);
+            CarregarImagem(pb_clube2, lbl_nomeClube2.Text);
+
         }
 
         private void CarregarImagem(PictureBox pb_clube, string text)
@@ -61,6 +62,43 @@ namespace Projeto
         {
             int score = int.Parse(lbl_resultado2.Text) + 1;
             lbl_resultado2.Text = score.ToString();
+        }
+
+        int min = 0, seg = 0;
+
+        private void btn_comecar_Click(object sender, EventArgs e)
+        {
+            cronometro.Enabled = true;
+        }
+
+        private void cronometro_Tick(object sender, EventArgs e)
+        {
+            seg++;
+            if (seg == 60)
+            {
+                min++;
+                seg = 0;
+            }
+
+            string texto = "";
+            if (min < 10)
+                texto += "0" + min;
+            else
+                texto += min;
+
+            if (seg < 10)
+                texto += ":0" + seg;
+            else
+                texto += ":" + seg;
+            lbl_timer.Text = texto;
+
+            if (min < 45)
+                lbl_parte.Text = "1ª parte";
+            else
+                lbl_parte.Text = "2ª parte";
+           
+            if ((min == 45 && seg == 0) || (min == 90) )
+                cronometro.Enabled = false;
         }
     }
 }
