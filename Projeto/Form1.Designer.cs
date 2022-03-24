@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.components = new System.ComponentModel.Container();
             this.pb_clube1 = new System.Windows.Forms.PictureBox();
             this.pb_clube2 = new System.Windows.Forms.PictureBox();
-            this.cronometro = new System.Windows.Forms.Label();
+            this.lbl_timer = new System.Windows.Forms.Label();
             this.lbl_nomeClube1 = new System.Windows.Forms.Label();
             this.lbl_nomeClube2 = new System.Windows.Forms.Label();
             this.lbl_resultado2 = new System.Windows.Forms.Label();
@@ -40,39 +40,40 @@
             this.btn_menos2 = new System.Windows.Forms.Button();
             this.btn_menos1 = new System.Windows.Forms.Button();
             this.btn_mais1 = new System.Windows.Forms.Button();
+            this.cronometro = new System.Windows.Forms.Timer(this.components);
+            this.lbl_parte = new System.Windows.Forms.Label();
+            this.btn_comecar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb_clube1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_clube2)).BeginInit();
             this.SuspendLayout();
             // 
             // pb_clube1
             // 
-            this.pb_clube1.Image = ((System.Drawing.Image)(resources.GetObject("pb_clube1.Image")));
             this.pb_clube1.Location = new System.Drawing.Point(22, 22);
             this.pb_clube1.Name = "pb_clube1";
-            this.pb_clube1.Size = new System.Drawing.Size(150, 150);
+            this.pb_clube1.Size = new System.Drawing.Size(144, 150);
             this.pb_clube1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_clube1.TabIndex = 0;
             this.pb_clube1.TabStop = false;
             // 
             // pb_clube2
             // 
-            this.pb_clube2.Image = ((System.Drawing.Image)(resources.GetObject("pb_clube2.Image")));
             this.pb_clube2.Location = new System.Drawing.Point(463, 22);
             this.pb_clube2.Name = "pb_clube2";
-            this.pb_clube2.Size = new System.Drawing.Size(150, 150);
+            this.pb_clube2.Size = new System.Drawing.Size(144, 150);
             this.pb_clube2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_clube2.TabIndex = 1;
             this.pb_clube2.TabStop = false;
             // 
-            // cronometro
+            // lbl_timer
             // 
-            this.cronometro.AutoSize = true;
-            this.cronometro.Font = new System.Drawing.Font("SimSun-ExtB", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cronometro.Location = new System.Drawing.Point(255, 80);
-            this.cronometro.Name = "cronometro";
-            this.cronometro.Size = new System.Drawing.Size(140, 47);
-            this.cronometro.TabIndex = 2;
-            this.cronometro.Text = "52:45";
+            this.lbl_timer.AutoSize = true;
+            this.lbl_timer.Font = new System.Drawing.Font("SimSun-ExtB", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl_timer.Location = new System.Drawing.Point(260, 79);
+            this.lbl_timer.Name = "lbl_timer";
+            this.lbl_timer.Size = new System.Drawing.Size(140, 47);
+            this.lbl_timer.TabIndex = 2;
+            this.lbl_timer.Text = "00:00";
             // 
             // lbl_nomeClube1
             // 
@@ -160,12 +161,39 @@
             this.btn_mais1.UseVisualStyleBackColor = true;
             this.btn_mais1.Click += new System.EventHandler(this.btn_mais1_Click);
             // 
+            // cronometro
+            // 
+            this.cronometro.Interval = 1;
+            this.cronometro.Tick += new System.EventHandler(this.cronometro_Tick);
+            // 
+            // lbl_parte
+            // 
+            this.lbl_parte.AutoSize = true;
+            this.lbl_parte.Location = new System.Drawing.Point(299, 143);
+            this.lbl_parte.Name = "lbl_parte";
+            this.lbl_parte.Size = new System.Drawing.Size(48, 15);
+            this.lbl_parte.TabIndex = 14;
+            this.lbl_parte.Text = "1ª parte";
+            // 
+            // btn_comecar
+            // 
+            this.btn_comecar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_comecar.Location = new System.Drawing.Point(275, 195);
+            this.btn_comecar.Name = "btn_comecar";
+            this.btn_comecar.Size = new System.Drawing.Size(111, 23);
+            this.btn_comecar.TabIndex = 15;
+            this.btn_comecar.Text = "Começar Jogo";
+            this.btn_comecar.UseVisualStyleBackColor = true;
+            this.btn_comecar.Click += new System.EventHandler(this.btn_comecar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(639, 330);
+            this.Controls.Add(this.btn_comecar);
+            this.Controls.Add(this.lbl_parte);
             this.Controls.Add(this.btn_menos1);
             this.Controls.Add(this.btn_mais1);
             this.Controls.Add(this.btn_menos2);
@@ -174,7 +202,7 @@
             this.Controls.Add(this.lbl_resultado2);
             this.Controls.Add(this.lbl_nomeClube2);
             this.Controls.Add(this.lbl_nomeClube1);
-            this.Controls.Add(this.cronometro);
+            this.Controls.Add(this.lbl_timer);
             this.Controls.Add(this.pb_clube2);
             this.Controls.Add(this.pb_clube1);
             this.Name = "Form1";
@@ -191,7 +219,7 @@
 
         private PictureBox pb_clube1;
         private PictureBox pb_clube2;
-        private Label cronometro;
+        private Label lbl_timer;
         private Label lbl_nomeClube1;
         private Label lbl_nomeClube2;
         private Label lbl_resultado2;
@@ -200,5 +228,8 @@
         private Button btn_menos2;
         private Button btn_menos1;
         private Button btn_mais1;
+        private System.Windows.Forms.Timer cronometro;
+        private Label lbl_parte;
+        private Button btn_comecar;
     }
 }
