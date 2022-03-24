@@ -5,41 +5,62 @@ namespace Projeto
         public Form1()
         {
             InitializeComponent();
+            CarregarImagem(pb_clube1, lbl_nomeClube1.Text);
+            CarregarImagem(pb_clube1, lbl_nomeClube2.Text);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void CarregarImagem(PictureBox pb_clube, string text)
         {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            if (text.Equals("Real Madrid"))
+                pb_clube.Image = Properties.Resources.Real_Madrid;
+            else if (text.Equals("Barcelona"))
+                pb_clube.Image = Properties.Resources.logo_barcelona_2048;
+            else if (text.Equals("Grêmio"))
+                pb_clube.Image = Properties.Resources.gremio_logo_escudo;
+            else if (text.Equals("Internacional"))
+                pb_clube.Image = Properties.Resources.logo_internacional_1536;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_menos1_Click(object sender, EventArgs e)
+        {
+            int score = int.Parse(lbl_resultado1.Text) ;
+            if (score > 0)
+            {
+                score--;
+                lbl_resultado1.Text = score.ToString();
+            }
+        }
+
+        private void btn_mais1_Click(object sender, EventArgs e)
+        {
+            int score = int.Parse(lbl_resultado1.Text) + 1;
+           lbl_resultado1.Text = score.ToString();
+        }
+
+        private void btn_menos2_Click(object sender, EventArgs e)
+        {
+            int score = int.Parse(lbl_resultado2.Text) ;
+            if (score > 0)
+            {
+                score--;
+                lbl_resultado2.Text = score.ToString();
+            }
+        }
+
+        private void btn_mais2_Click(object sender, EventArgs e)
+        {
+            int score = int.Parse(lbl_resultado2.Text) + 1;
+            lbl_resultado2.Text = score.ToString();
         }
     }
 }
