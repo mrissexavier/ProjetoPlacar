@@ -43,6 +43,8 @@
             this.cronometro = new System.Windows.Forms.Timer(this.components);
             this.lbl_parte = new System.Windows.Forms.Label();
             this.btn_comecar = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pb_clube1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_clube2)).BeginInit();
             this.SuspendLayout();
@@ -190,6 +192,10 @@
             this.btn_comecar.UseVisualStyleBackColor = true;
             this.btn_comecar.Click += new System.EventHandler(this.btn_comecar_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -235,5 +241,7 @@
         private System.Windows.Forms.Timer cronometro;
         private Label lbl_parte;
         private Button btn_comecar;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
     }
 }
