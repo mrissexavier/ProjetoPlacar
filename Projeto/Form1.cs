@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Projeto
 {
     public partial class Form1 : Form
@@ -5,8 +7,44 @@ namespace Projeto
         public Form1()
         {
             InitializeComponent();
+            CarregarArquivo();
             CarregarImagem(pb_clube1, lbl_nomeClube1.Text);
             CarregarImagem(pb_clube2, lbl_nomeClube2.Text);
+        }
+
+        private void CarregarArquivo()
+        {
+            //string texto = File.ReadAllText("jogo.txt", Encoding.UTF8);
+            string texto = "";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+                    texto = File.ReadAllText(openFileDialog1.FileName);
+
+            string[]  parametros = texto.Split(';');
+            lbl_nomeClube1.Text = parametros[0];
+            lbl_nomeClube2.Text = parametros[1];
+            lbl_resultado1.Text = parametros[2];
+            lbl_resultado2.Text = parametros[3];
+            min = int.Parse(parametros[4]);
+            seg = int.Parse(parametros[5]);
+            lbl_timer.Text =
+            texto = "";
+            if (min < 10)
+                texto += "0" + min;
+            else
+                texto += min;
+
+            if (seg < 10)
+                texto += ":0" + seg;
+            else
+                texto += ":" + seg;
+            lbl_timer.Text = texto;
+
+            if (min < 45)
+                lbl_parte.Text = "1º tempo";
+            else
+                lbl_parte.Text = "2º tempo";
 
         }
 
@@ -70,6 +108,30 @@ namespace Projeto
         {
             if(min == 90)
             {
+                string resultadoFinal =
+                    lbl_nomeClube1.Text + ";" +
+                    lbl_nomeClube2.Text + ";" +
+                    lbl_resultado1.Text + ";" +
+                    lbl_resultado2.Text + ";" +
+                    min + ";" +
+                    seg ;
+
+                //File.WriteAllText("jogo.txt", resultadoFinal);
+
+                Stream myStream;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "txt files (*.txt) | *.txt|All files (*.*) | *.*";
+                saveFileDialog.FilterIndex = 2;
+                saveFileDialog.RestoreDirectory = true;
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if((myStream = saveFileDialog1.OpenFile()) != null)
+                        myStream.Close();
+                    File.WriteAllText(saveFileDialog1.FileName, resultadoFinal);
+                }
+
+
+
                 min = 0;
                 seg = 0;
                 lbl_timer.Text = "00:00";
@@ -137,7 +199,7 @@ namespace Projeto
                 if (min == 45)
                     btn_comecar.Text = "Começar 2º tempo";
                 else if (min == 90)
-                    btn_comecar.Text = "Recomeçar";
+                    btn_comecar.Text = "Gravar e recomeçar";
             }
         }
     }
